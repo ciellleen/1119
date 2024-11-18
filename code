@@ -1,0 +1,70 @@
+선언된 구조체에 대해 여러 변수들의 데이터를 처리해야 하는 경우, 구조체 배열을 사용
+
+<aside>
+💡
+
+아래는 학번, 이름, 학점을 멤버로 갖는 student 구조체에 대하여 여러 학생의 데이터를 관리해야 하는 경우 구조체 배열을 선언하여 사용하는 예시임.
+
+</aside>
+
+```c
+#include <stdio.h>
+
+struct student
+{
+	int number;
+	char name[10];
+	double grade;
+};
+
+int main(void)
+{
+	struct student list[3];
+
+	for (int i = 0; i < 3; i++)
+	{
+		printf("학번: ");
+		scanf_s("%d", &list[i].number);
+		printf("이름: ");
+		scanf_s("%s", list[i].name, 10);
+		printf("학점: ");
+		scanf_s("%lf", &list[i].grade);
+	}
+	for (int i = 0; i < 3; i++)
+		printf("\n이름: %s, 학점: %f \n", list[i].name, list[i].grade);
+	return 0;
+}
+```
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/43f4c680-a7ab-4f2d-b233-d37ec40472ce/9db28cf7-b76f-4bd5-962f-a35b8c73f24b/image.png)
+
+구조체 배열을 선언할 떄는 구조체 키워드, 태그, 그리고 배열의 이름과 요소 개수가 필요하다.
+
+각 구조체 변수에 대해서는 반복문을 이용하여 데이터 값을 입력받는다.
+
+같은 방법으로 출력하면 된다.
+
+---
+
+구조체 변수는 배열로도 선언이 가능함. 
+
+```c
+struct score a[10];
+ 
+a[0].scoreKOR = 100;
+a[0].scoreMAT = 75;
+a[0].scoreENG = 87;
+a[0].scoreSCI = 97;
+ 
+a[1].scoreKOR = 68;
+a[1].scoreMAT = 42;
+a[1].scoreENG = 100;
+a[1].scoreSCI = 74;
+```
+
+<aside>
+💡
+
+주의:  배열의 [ ]는 구조체 변수 뒤에 붙임.
+
+</aside>
